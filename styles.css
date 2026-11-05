@@ -1,0 +1,274 @@
+/* ==========================================================================
+   Mas Flow: hoja única de estilos. Mobile first: la base es el móvil y los
+   min-width añaden el resto.
+   1. Variables  2. Base  3. Botones  4. Cabecera  5. Portada
+   6. Rayas  7. Servicios  8. Pantallas mayores
+   ========================================================================== */
+
+/* 1. VARIABLES -------------------------------------------------------------
+   Colores medidos en sus fotos (lima, dorado) y en la bandera dominicana
+   (azul). El lima es el único color de la acción principal. */
+:root {
+  --blanco: #ffffff;
+  --roto: #f5f3f7;
+  --lima: #9cd63f;
+  --lima-oscuro: #8bc42f;
+  --azul: #002d62;
+  --azul-hondo: #001f45;
+  --azul-medio: #3a4f78;
+  --oro: #f4cd5b;
+
+  --letra-rotulo: "Shrikhand", "Arial Black", sans-serif;
+  --letra-texto: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --margen: 16px;
+  --ancho: 1200px;
+  --alto-cabecera: 64px;
+}
+
+/* 2. BASE ------------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Un enlace #seccion no debe quedar bajo la cabecera fija */
+  scroll-padding-top: calc(var(--alto-cabecera) + 12px);
+}
+
+body {
+  margin: 0;
+  background: var(--blanco);
+  color: var(--azul);
+  font: 400 1.0625rem/1.55 var(--letra-texto);
+}
+
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, p, figure, blockquote { margin: 0; }
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.iconos { position: absolute; }
+
+.saltar {
+  position: absolute;
+  left: var(--margen);
+  top: -100px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--azul);
+  color: var(--blanco);
+  border-radius: 8px;
+}
+.saltar:focus { top: 10px; }
+
+/* 3. BOTONES --------------------------------------------------------------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--lima);
+  color: var(--azul);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .15s ease;
+}
+.boton svg { flex: none; }
+
+.boton--grande { min-height: 56px; padding: 12px 26px; font-size: 1.125rem; }
+
+@media (hover: hover) {
+  .boton:hover { background: var(--lima-oscuro); }
+}
+
+/* 4. CABECERA -------------------------------------------------------------- */
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--blanco);
+  border-bottom: 2px solid var(--azul);
+}
+
+.cabecera-dentro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: var(--ancho);
+  min-height: var(--alto-cabecera);
+  margin-inline: auto;
+  padding-inline: var(--margen);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font: 400 1.625rem/1 var(--letra-rotulo);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu { display: none; }
+.solo-escritorio { display: none; }
+
+/* 5. PORTADA ---------------------------------------------------------------
+   El nombre es la apuesta de la demo: "Flow" se degrada como un fade, de lleno
+   a rayas cada vez más finas. Sin soporte de background-clip queda en azul. */
+.portada-texto { padding: 14px var(--margen) 28px; }
+
+/* Medidas de Shrikhand con interlineado 1: "Flow" ocupa 2,6em de ancho y su
+   línea base cae a .8em de la parte alta de la caja. De ahí salen los tamaños
+   y las rayas, en em para que escalen con la letra. */
+.titular-marca {
+  display: block;
+  font: 400 34.5vw/1 var(--letra-rotulo);
+}
+
+.fade {
+  display: block;
+  width: max-content;
+  margin-top: -.14em;
+  /* La letra inclinada se sale de su caja: sin este margen se recortaría */
+  margin-left: -.05em;
+  padding-inline: .05em;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fade {
+    background-image: linear-gradient(to bottom,
+      var(--azul) 0 .46em,
+      transparent .46em .475em, var(--azul) .475em .54em,
+      transparent .54em .565em, var(--azul) .565em .615em,
+      transparent .615em .65em, var(--azul) .65em .69em,
+      transparent .69em .735em, var(--azul) .735em .76em,
+      transparent .76em .785em, var(--azul) .785em .805em,
+      transparent .805em);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+.titular-que {
+  display: block;
+  margin-top: -.5em;
+  font: 700 1.25rem/1.25 var(--letra-texto);
+}
+
+.portada-entrada { max-width: 34em; margin: 10px 0 20px; }
+
+.portada .boton--grande { width: 100%; }
+
+.portada-foto img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+/* 6. RAYAS DEL FADE ---------------------------------------------------------
+   El recurso propio entre secciones: rayas que engordan hasta volverse color
+   lleno. Solo dos, a la entrada y a la salida del lima. */
+.rayas {
+  height: 56px;
+  background: linear-gradient(to bottom,
+    transparent 0 12px, var(--lima) 12px 14px,
+    transparent 14px 21px, var(--lima) 21px 25px,
+    transparent 25px 31px, var(--lima) 31px 37px,
+    transparent 37px 41px, var(--lima) 41px 49px,
+    transparent 49px 51px, var(--lima) 51px);
+}
+.rayas--salida { transform: scaleY(-1); background-color: var(--roto); }
+
+/* 7. SERVICIOS -------------------------------------------------------------- */
+.servicios { background: var(--lima); padding: 20px var(--margen) 28px; }
+.servicios-dentro { max-width: var(--ancho); margin-inline: auto; }
+
+.seccion-titulo {
+  font: 400 clamp(2.5rem, 11vw, 4.75rem)/1.05 var(--letra-rotulo);
+}
+
+.lista-servicios { margin: 24px 0 0; padding: 0; list-style: none; }
+.lista-servicios li { padding: 18px 0 20px; border-top: 2px solid var(--azul); }
+.lista-servicios h3 { font: 400 1.75rem/1.15 var(--letra-rotulo); }
+.lista-servicios p { margin-top: 6px; max-width: 32em; }
+
+/* 8. PANTALLAS MAYORES ------------------------------------------------------
+   Desde 640 px la portada es otra: nombre a la izquierda y foto enmarcada a la
+   derecha, nunca a pantalla completa porque la foto mide 752 px. */
+@media (min-width: 640px) {
+  :root { --margen: 24px; --alto-cabecera: 72px; }
+
+  .menu { display: flex; gap: 4px; margin-left: auto; }
+  .menu a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding-inline: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  .solo-movil { display: none; }
+  .solo-escritorio { display: inline; }
+
+  .portada {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 40vw);
+    align-items: center;
+    gap: clamp(16px, 3vw, 48px);
+    max-width: var(--ancho);
+    margin-inline: auto;
+    padding: 28px var(--margen) 8px;
+  }
+  .portada-texto { padding: 0; }
+  .titular-marca { font-size: min(18.8vw, 232px); }
+  .portada .boton--grande { width: auto; }
+  .portada-foto img { aspect-ratio: 3 / 4; border-radius: 12px; }
+
+  .lista-servicios {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+  }
+}
+
+/* Escritorio: título a la izquierda y servicios a dos columnas a la derecha */
+@media (min-width: 1024px) {
+  .servicios { padding-block: 32px 40px; }
+  .servicios-dentro {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .lista-servicios { margin: 0; }
+  .lista-servicios h3 { font-size: 2.125rem; }
+}
+
+@media (hover: hover) and (min-width: 640px) {
+  .menu a:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+}
+
+@media (min-width: 1250px) {
+  .portada { grid-template-columns: 1fr 500px; }
+  .titular-que { font-size: 1.5rem; }
+  .portada-entrada { font-size: 1.1875rem; margin: 14px 0 24px; }
+}

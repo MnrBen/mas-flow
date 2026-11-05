@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Mientras sea demo no se indexa. Quitar al pasar a web real (ver NOTAS.md). -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="format-detection" content="telephone=no">
+  <title>Mas Flow | Barbería en Errenteria: degradados, diseños y trenzas</title>
+  <meta name="description" content="Mas Flow, barbería en Errenteria (Gipuzkoa). Degradados, diseños con líneas, cortes para niños y trenzas. Pide cita por teléfono o por Instagram.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Shrikhand&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "name": "Mas Flow Barbershop",
+    "description": "Barbería en Errenteria: degradados, diseños con líneas, cortes para niños y trenzas.",
+    "telephone": "+34672682749",
+    "sameAs": ["https://www.instagram.com/mas.flowbarbershop/"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Morrongilleta Kalea, 12",
+      "postalCode": "20100",
+      "addressLocality": "Errenteria",
+      "addressRegion": "Gipuzkoa",
+      "addressCountry": "ES"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "12:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:30", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday"], "opens": "10:00", "closes": "20:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "24:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "19:00" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- Iconos propios: se reutilizan con <use> -->
+  <svg class="iconos" aria-hidden="true" width="0" height="0">
+    <symbol id="i-tel" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 2.6 9.4 2c.6-.1 1.1.2 1.4.7l1.3 3.2c.2.5.1 1-.3 1.4L10.1 9c1 2.1 2.7 3.9 4.9 4.9l1.7-1.7c.4-.4.9-.5 1.4-.3l3.2 1.3c.5.3.8.8.7 1.4l-.6 2.8c-.2 1-1.1 1.6-2 1.6C10.900 19 5 13.100 5 4.600c0-.9.6-1.800 1.600-2Z" transform="translate(-1 1)"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3.500" y="3.500" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17" cy="7" r="1.300" fill="currentColor"/></symbol>
+  </svg>
+
+  <header class="cabecera">
+    <div class="cabecera-dentro">
+      <a class="logo" href="#inicio" aria-label="Mas Flow, ir al inicio">Mas Flow</a>
+      <nav class="menu" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="boton boton--cabecera" href="tel:+34672682749" aria-label="Llamar al 672 68 27 49">
+        <svg width="20" height="20" aria-hidden="true"><use href="#i-tel"/></svg>
+        <span class="solo-movil">Llamar</span>
+        <span class="solo-escritorio">672 68 27 49</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- 1. PORTADA -->
+    <section class="portada" id="inicio">
+      <div class="portada-texto">
+        <h1 class="titular">
+          <span class="titular-marca">Mas <span class="fade">Flow</span></span>
+          <span class="titular-que">Barbería en Errenteria</span>
+        </h1>
+        <p class="portada-entrada">Degradados, diseños con líneas y trenzas. Le cuentas al Domi cómo lo quieres y sales con tu corte, fino y a tu estilo.</p>
+        <a class="boton boton--grande" href="https://www.instagram.com/mas.flowbarbershop/" rel="noopener">
+          <svg width="24" height="24" aria-hidden="true"><use href="#i-ig"/></svg>
+          Pide cita por Instagram
+        </a>
+      </div>
+      <figure class="portada-foto">
+        <img src="img/degradado-4-560.webp"
+             srcset="img/degradado-4-360.webp 360w, img/degradado-4-560.webp 560w, img/degradado-4-752.webp 752w"
+             sizes="(min-width: 1250px) 500px, (min-width: 640px) 40vw, 100vw"
+             width="752" height="1400"
+             alt="Corte con degradado en los laterales y pelo castaño peinado hacia delante, visto de perfil">
+      </figure>
+    </section>
+
+    <div class="rayas" aria-hidden="true"></div>
+
+    <!-- 2. SERVICIOS. Sin precios ni duraciones: el dueño no tiene carta.
+         HUECO: cuando la haya, el precio va en cada <li>. -->
+    <section class="servicios" id="servicios" aria-labelledby="titulo-servicios">
+      <div class="servicios-dentro">
+        <h2 class="seccion-titulo" id="titulo-servicios">¿Qué te hacemos?</h2>
+        <ul class="lista-servicios">
+          <li>
+            <h3>Cortes y degradados</h3>
+            <p>Fades que se funden limpios, ajustados a cómo te gusta llevar el pelo.</p>
+          </li>
+          <li>
+            <h3>Diseños con líneas</h3>
+            <p>Líneas y formas marcadas en el corte. Lo hablas con el Domi y se lo dejas claro.</p>
+          </li>
+          <li>
+            <h3>Cortes para niños</h3>
+            <p>Para los peques, con el mismo cuidado. El buen trato con los niños sale en las reseñas.</p>
+          </li>
+          <li>
+            <h3>Trenzas, con Caro</h3>
+            <!-- HUECO: confirmar dónde se hacen las trenzas y añadir el Instagram de Caro -->
+            <p>En colaboración con Caro, que hace las trenzas. Pregunta por ellas al pedir cita.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="rayas rayas--salida" aria-hidden="true"></div>
+  </main>
+</body>
+</html>
