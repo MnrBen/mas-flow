@@ -1,13 +1,44 @@
 /* Mas Flow: JavaScript único y sin librerías. Si falla, todo el contenido se ve
    igual: aquí solo hay mejoras.
-   1. Visor de fotos  2. Hoy en el horario */
+   1. Animaciones  2. Visor de fotos  3. Hoy en el horario */
+
+// Este archivo se carga en <head> para activar las animaciones antes de pintar
+prepararAnimaciones();
 
 document.addEventListener('DOMContentLoaded', () => {
   iniciarVisor();
   marcarHoy();
+  observarGrupos();
 });
 
-/* 2. HOY EN EL HORARIO ------------------------------------------------------
+/* 1. ANIMACIONES ------------------------------------------------------------
+   Solo dos gestos: el nombre de la portada entra de arriba abajo, como pasar
+   la máquina, y las fotos aparecen al llegar a cada grupo. Las secciones a las
+   que lleva un enlace # no se animan. Solo se activan aquí: sin JS o con
+   "reducir movimiento" no hay ninguna y todo se ve desde el principio. */
+function prepararAnimaciones() {
+  const quiereMovimiento = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!quiereMovimiento) return;
+  if ('IntersectionObserver' in window) document.documentElement.classList.add('anima');
+
+  // Desplazamiento suave solo tras cargar: activo durante la carga, Safari corta
+  // a medias el salto de una dirección con # y deja la sección fuera de sitio
+  window.addEventListener('load', () => document.documentElement.classList.add('suave'));
+}
+
+function observarGrupos() {
+  if (!document.documentElement.classList.contains('anima')) return;
+  const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (!entrada.isIntersecting) return;
+      entrada.target.classList.add('visto');
+      observador.unobserve(entrada.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.grupo').forEach((grupo) => observador.observe(grupo));
+}
+
+/* 3. HOY EN EL HORARIO ------------------------------------------------------
    Resalta el día actual con la hora de Errenteria, esté donde esté quien mira.
    No dice "abierto ahora": el horario aún está por confirmar. */
 function marcarHoy() {
@@ -20,7 +51,7 @@ function marcarHoy() {
   });
 }
 
-/* 1. VISOR DE FOTOS ---------------------------------------------------------
+/* 2. VISOR DE FOTOS ---------------------------------------------------------
    Las fotos van en una pista con desplazamiento nativo, así siguen al dedo sin
    más código. Sin JS o sin <dialog>, los enlaces abren la foto directamente. */
 function iniciarVisor() {
@@ -31,6 +62,7 @@ function iniciarVisor() {
   const pista = document.getElementById('visor-pista');
   const texto = document.getElementById('visor-texto');
   let actual = 0;
+  let origen = null;
 
   // Una diapositiva por foto. La foto solo se pide al acercarse a ella.
   enlaces.forEach((enlace) => {
@@ -48,7 +80,8 @@ function iniciarVisor() {
   });
 
   const titulo = (i) => enlaces[i].closest('.grupo').querySelector('h3').textContent;
-  const pintarTexto = () => { texto.textContent = `${titulo(actual)} · ${actual + 1} de ${enlaces.length}`; };
+  // En dos líneas (white-space: pre-line) para que no se parta el contador
+  const pintarTexto = () => { texto.textContent = `${titulo(actual)}\n${actual + 1} de ${enlaces.length}`; };
   const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function irA(i, suave) {
@@ -65,6 +98,7 @@ function iniciarVisor() {
       // Ctrl o Cmd + clic mantienen el comportamiento normal del enlace
       if (evento.metaKey || evento.ctrlKey || evento.shiftKey) return;
       evento.preventDefault();
+      origen = enlace;
       document.documentElement.classList.add('visor-abierto');
       visor.showModal();
       irA(i, false);
@@ -97,7 +131,11 @@ function iniciarVisor() {
     if (evento.target.classList.contains('visor-foto')) visor.close();
   });
 
-  visor.addEventListener('close', () => document.documentElement.classList.remove('visor-abierto'));
+  // Safari no enfoca los enlaces al pulsarlos: el foco se devuelve a mano
+  visor.addEventListener('close', () => {
+    document.documentElement.classList.remove('visor-abierto');
+    if (origen) origen.focus({ preventScroll: true });
+  });
 
   // Si gira el móvil con el visor abierto, sigue en la misma foto
   window.addEventListener('resize', () => {

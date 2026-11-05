@@ -53,6 +53,7 @@ pasó por visto bueno previo: se revisa con la demo ya hecha.
   madre, padre o tutor; si no, se retiran.
 - Las capas son de una marca de productos, no del negocio. Sus diseños se ven
   en algunas fotos.
+- En `degradado-3` y `diseno-2` se ven transeúntes de lejos en la calle.
 - Las fotos vienen de Instagram y su calidad es limitada. Mejoraría mucho con
   fotos originales del móvil del Domi.
 
@@ -90,6 +91,22 @@ La web está preparada para añadirlos; ninguno se ha inventado.
   brief. Pedir permiso o enlazar a la ficha cuando se tenga el enlace.
 - No publicar la raíz del repositorio tal cual: `negocio.md` y `NOTAS.md` son
   internos y mencionan a otro negocio.
+
+## Verificación de la demo (`demo-v1`)
+
+Medido en Chrome y en WebKit de Playwright a 360, 390, 768 y 1280 px, y con
+perfiles de iPhone SE y iPhone 14 (vertical y horizontal) en WebKit.
+
+**Límite importante:** WebKit en Windows es el motor de Safari, pero **no es
+Safari de un iPhone real**. Falta probar en un iPhone:
+
+- Llamar con el botón `tel:` y que Instagram abra la app.
+- Deslizar carriles y visor con el dedo: el dedo real solo se ha probado en
+  Chrome con eventos táctiles simulados. En WebKit, el visor con toques y el
+  contador moviendo la pista por código.
+- Que se vean en negrita los botones y títulos en Onest. En el WebKit de Windows
+  salen en peso normal; parece limitación de esa versión con fuentes variables.
+- La barra de Safari al subir y bajar, con la cabecera fija y el visor abierto.
 
 ## Fuera de la demo: lista para la reunión
 
