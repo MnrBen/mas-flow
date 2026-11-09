@@ -12,13 +12,13 @@ pasó por visto bueno previo: se revisa con la demo ya hecha.
   paso entre secciones.
 - **Paleta (demo-v2, urbana):** el lima del local se veía infantil y venía con
   el local, no lo eligieron ellos. Ahora:
-  - Tinta : el azul dominicano llevado casi a negro, para cabecera,
+  - Tinta `#0E1624`: el azul dominicano llevado casi a negro, para cabecera,
     servicios, reseñas y contacto.
-  - Hormigón  de base.
-  - Dorado , de la camiseta del Domi y del marco del espejo: único
+  - Hormigón `#EBE9E5` de base.
+  - Dorado `#F2C230`, de la camiseta del Domi y del marco del espejo: único
     color de la acción.
   - Sin negro puro ni rojo, para no parecerse a OG.
-  - La v1, con el lima, sigue en la etiqueta .
+  - La v1, con el lima, sigue en la etiqueta `demo-v1`.
 - **Tipografías:** Shrikhand (gruesa, inclinada, de rótulo pintado a mano: da
   movimiento, el "flow") y Onest (texto, clara y cercana).
 - **Recurso propio:** las rayas del fade, que adelgazan hasta desaparecer. Solo
