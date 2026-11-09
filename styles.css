@@ -7,17 +7,20 @@
    ========================================================================== */
 
 /* 1. VARIABLES -------------------------------------------------------------
-   Colores medidos en sus fotos (lima, dorado) y en la bandera dominicana
-   (azul). El lima es el único color de la acción principal. */
+   Paleta urbana: azul noche casi negro (el azul dominicano llevado a tinta),
+   gris hormigón y dorado, de la camiseta del Domi y del marco del espejo. El
+   dorado es el único color de la acción principal. Sin negro ni rojo (OG). */
 :root {
   --blanco: #ffffff;
-  --roto: #f5f3f7;
-  --lima: #9cd63f;
-  --lima-oscuro: #8bc42f;
-  --azul: #002d62;
-  --azul-hondo: #001f45;
-  --azul-medio: #3a4f78;
-  --oro: #f4cd5b;
+  --hormigon: #ebe9e5;
+  --accion: #f2c230;
+  --accion-oscuro: #ddad1c;
+  --tinta: #0e1624;
+  --tinta-2: #1a2436;
+  --tinta-honda: #080d16;
+  --gris: #3b4558;
+  --texto-suave: #c9ced8;
+  --oro: #f2c230;
 
   --letra-rotulo: "Shrikhand", "Arial Black", sans-serif;
   --letra-texto: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -41,8 +44,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--blanco);
-  color: var(--azul);
+  background: var(--hormigon);
+  color: var(--tinta);
   font: 400 1.0625rem/1.55 var(--letra-texto);
 }
 
@@ -51,7 +54,7 @@ h1, h2, h3, p, figure, blockquote { margin: 0; }
 a { color: inherit; }
 
 :focus-visible {
-  outline: 3px solid var(--azul);
+  outline: 3px solid var(--tinta);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -67,7 +70,7 @@ a { color: inherit; }
   align-items: center;
   min-height: 44px;
   padding: 0 16px;
-  background: var(--azul);
+  background: var(--tinta);
   color: var(--blanco);
   border-radius: 8px;
 }
@@ -83,8 +86,8 @@ a { color: inherit; }
   padding: 8px 20px;
   border: 2px solid transparent;
   border-radius: 999px;
-  background: var(--lima);
-  color: var(--azul);
+  background: var(--accion);
+  color: var(--tinta);
   font-weight: 700;
   text-decoration: none;
   transition: background-color .15s ease;
@@ -93,11 +96,11 @@ a { color: inherit; }
 
 .boton--grande { min-height: 56px; padding: 12px 16px; font-size: 1.125rem; }
 
-/* Secundario: solo línea, para que el lima siga siendo la acción principal */
+/* Secundario: solo línea, para que el dorado siga siendo la acción principal */
 .boton--linea { background: transparent; border-color: currentColor; color: inherit; }
 
 @media (hover: hover) {
-  .boton:hover { background: var(--lima-oscuro); }
+  .boton:hover { background: var(--accion-oscuro); }
   .boton--linea:hover { background: transparent; text-decoration: underline; text-underline-offset: 4px; }
 }
 
@@ -106,9 +109,10 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 20;
-  background: var(--blanco);
-  border-bottom: 2px solid var(--azul);
+  background: var(--tinta);
+  color: var(--blanco);
 }
+.cabecera :focus-visible { outline-color: var(--accion); }
 
 .cabecera-dentro {
   display: flex;
@@ -158,12 +162,12 @@ a { color: inherit; }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .fade {
     background-image: linear-gradient(to bottom,
-      var(--azul) 0 .46em,
-      transparent .46em .475em, var(--azul) .475em .54em,
-      transparent .54em .565em, var(--azul) .565em .615em,
-      transparent .615em .65em, var(--azul) .65em .69em,
-      transparent .69em .735em, var(--azul) .735em .76em,
-      transparent .76em .785em, var(--azul) .785em .805em,
+      var(--tinta) 0 .46em,
+      transparent .46em .475em, var(--tinta) .475em .54em,
+      transparent .54em .565em, var(--tinta) .565em .615em,
+      transparent .615em .65em, var(--tinta) .65em .69em,
+      transparent .69em .735em, var(--tinta) .735em .76em,
+      transparent .76em .785em, var(--tinta) .785em .805em,
       transparent .805em);
     -webkit-background-clip: text;
     background-clip: text;
@@ -175,7 +179,9 @@ a { color: inherit; }
 .titular-que {
   display: block;
   margin-top: -.5em;
-  font: 700 1.25rem/1.25 var(--letra-texto);
+  font: 700 1rem/1.25 var(--letra-texto);
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
 .portada-entrada { max-width: 34em; margin: 10px 0 20px; }
@@ -191,20 +197,22 @@ a { color: inherit; }
 
 /* 6. RAYAS DEL FADE ---------------------------------------------------------
    El recurso propio entre secciones: rayas que engordan hasta volverse color
-   lleno. Solo dos, a la entrada y a la salida del lima. */
+   lleno. Solo dos, a la entrada y a la salida de los servicios. */
 .rayas {
   height: 56px;
+  /* Mismo color que los servicios, a los que lleva */
   background: linear-gradient(to bottom,
-    transparent 0 12px, var(--lima) 12px 14px,
-    transparent 14px 21px, var(--lima) 21px 25px,
-    transparent 25px 31px, var(--lima) 31px 37px,
-    transparent 37px 41px, var(--lima) 41px 49px,
-    transparent 49px 51px, var(--lima) 51px);
+    transparent 0 12px, var(--tinta) 12px 14px,
+    transparent 14px 21px, var(--tinta) 21px 25px,
+    transparent 25px 31px, var(--tinta) 31px 37px,
+    transparent 37px 41px, var(--tinta) 41px 49px,
+    transparent 49px 51px, var(--tinta) 51px);
 }
-.rayas--salida { transform: scaleY(-1); background-color: var(--roto); }
+.rayas--salida { transform: scaleY(-1); background-color: var(--hormigon); }
 
 /* 7. SERVICIOS -------------------------------------------------------------- */
-.servicios { background: var(--lima); padding: 20px var(--margen) 28px; }
+.servicios { background: var(--tinta); color: var(--blanco); padding: 20px var(--margen) 28px; }
+.servicios :focus-visible { outline-color: var(--accion); }
 .servicios-dentro { max-width: var(--ancho-dentro); margin-inline: auto; }
 
 .seccion-titulo {
@@ -212,14 +220,15 @@ a { color: inherit; }
 }
 
 .lista-servicios { margin: 24px 0 0; padding: 0; list-style: none; }
-.lista-servicios li { padding: 18px 0 20px; border-top: 2px solid var(--azul); }
+.lista-servicios li { padding: 18px 0 20px; border-top: 2px solid var(--accion); }
+.lista-servicios p { color: var(--texto-suave); }
 .lista-servicios h3 { font: 400 1.75rem/1.15 var(--letra-rotulo); }
 .lista-servicios p { margin-top: 6px; max-width: 32em; }
 
 /* 8. TRABAJOS ----------------------------------------------------------------
    Móvil y tableta: carriles que siguen al dedo, con la siguiente foto asomando.
    Escritorio (sección 10): mosaicos sin huecos. */
-.trabajos { background: var(--roto); padding: 12px var(--margen) 56px; }
+.trabajos { background: var(--hormigon); padding: 12px var(--margen) 56px; }
 .trabajos-dentro { max-width: var(--ancho-dentro); margin-inline: auto; }
 
 .nota-google { margin-top: 6px; }
@@ -248,7 +257,7 @@ a { color: inherit; }
   overflow: hidden;
   border-radius: 10px;
   scroll-snap-align: start;
-  background: var(--azul);
+  background: var(--tinta);
 }
 .foto--ancha { width: min(92vw, 360px); }
 .foto img {
@@ -264,12 +273,13 @@ a { color: inherit; }
   margin-top: 10px;
   padding: 18px 20px;
   border-radius: 10px;
-  background: var(--lima);
+  background: var(--tinta);
+  color: var(--blanco);
   font-size: 1.125rem;
   font-weight: 500;
   line-height: 1.4;
 }
-.resena footer { margin-top: 8px; font-size: .9375rem; font-weight: 400; }
+.resena footer { margin-top: 8px; color: var(--accion); font-size: .9375rem; font-weight: 500; }
 
 .trabajos-mas { width: 100%; margin-top: 32px; }
 
@@ -285,12 +295,12 @@ a { color: inherit; }
   margin: 0;
   padding: 0;
   border: 0;
-  background: var(--azul-hondo);
+  background: var(--tinta-honda);
   color: var(--blanco);
 }
 .visor[open] { display: flex; flex-direction: column; }
-.visor::backdrop { background: var(--azul-hondo); }
-.visor :focus-visible { outline-color: var(--lima); }
+.visor::backdrop { background: var(--tinta-honda); }
+.visor :focus-visible { outline-color: var(--accion); }
 
 .visor-pista {
   flex: 1;
@@ -347,18 +357,18 @@ a { color: inherit; }
 html.visor-abierto { overflow: hidden; }
 
 @media (hover: hover) {
-  .visor-boton:hover { background: var(--azul); color: var(--lima); }
+  .visor-boton:hover { background: var(--tinta); color: var(--accion); }
 }
 
 /* 10. CONTACTO Y PIE ---------------------------------------------------------
-   El azul de la bandera cierra la página: aquí el lima vuelve a ser la acción. */
+   La tinta cierra la página y el dorado es la acción. */
 .contacto {
   padding: 40px var(--margen) 48px;
-  background: var(--azul);
+  background: var(--tinta);
   color: var(--blanco);
 }
 .contacto-dentro { max-width: var(--ancho-dentro); margin-inline: auto; }
-.contacto :focus-visible, .pie :focus-visible { outline-color: var(--lima); }
+.contacto :focus-visible, .pie :focus-visible { outline-color: var(--accion); }
 
 .domi { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
 .domi img {
@@ -389,12 +399,12 @@ address { margin-bottom: 14px; font-style: normal; }
 .horario { width: 100%; border-collapse: collapse; }
 .horario th, .horario td {
   padding: 7px 0;
-  border-bottom: 1px solid var(--azul-medio);
+  border-bottom: 1px solid var(--gris);
   text-align: left;
   font-weight: 400;
 }
 .horario td { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.horario tr.hoy th, .horario tr.hoy td { color: var(--lima); font-weight: 700; }
+.horario tr.hoy th, .horario tr.hoy td { color: var(--accion); font-weight: 700; }
 .horario-nota { margin-top: 10px; font-size: .9375rem; }
 
 .mapa {
@@ -403,10 +413,10 @@ address { margin-bottom: 14px; font-style: normal; }
   height: 300px;
   border: 0;
   border-radius: 10px;
-  background: var(--azul-medio);
+  background: var(--tinta-2);
 }
 
-.pie { background: var(--azul-hondo); color: var(--blanco); }
+.pie { background: var(--tinta-honda); color: var(--blanco); }
 .pie-dentro {
   display: flex;
   align-items: center;
@@ -434,7 +444,7 @@ address { margin-bottom: 14px; font-style: normal; }
   margin-top: 16px;
   padding: 14px 18px;
   border-radius: 10px;
-  background: var(--lima);
+  background: var(--accion);
   font-weight: 500;
 }
 .legal h2 { margin: 28px 0 8px; font: 400 1.75rem/1.15 var(--letra-rotulo); }
@@ -530,20 +540,22 @@ html.suave { scroll-behavior: smooth; }
 
   .resena { display: flex; flex-direction: column; justify-content: center; margin: 0; padding: 20px; font-size: 1.25rem; }
   .grupo--resena-antes .resena { order: -1; }
+  /* Degradados: cuatro fotos y la reseña en franja debajo */
+  .grupo--cuatro .resena { grid-column: 1 / -1; padding-block: 16px; }
 
-  /* Trenzas: una foto grande, una ancha y el resto repartido, sin huecos */
+  /* Trenzas: fila de cuatro arriba; abajo, la reseña y la foto de la portada
+     en vertical, con la cara entera. Queda al fondo: hay que bajar para verla. */
   .grupo--trenzas {
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto minmax(280px, auto) minmax(280px, auto);
+    grid-template-rows: auto minmax(280px, auto) auto;
   }
   .grupo--trenzas .foto { aspect-ratio: auto; }
-  .foto--t5 { grid-column: 1 / 3; grid-row: 2 / 4; }
-  .foto--t4 { grid-column: 3 / 5; grid-row: 2; }
-  .foto--t3 { grid-column: 5; grid-row: 2; }
-  .foto--t1 { grid-column: 3; grid-row: 3; }
-  .foto--t2 { grid-column: 4; grid-row: 3; }
-  .resena--larga { grid-column: 5; grid-row: 3; padding: 14px; font-size: .9375rem; }
-  .resena--larga footer { font-size: .875rem; }
+  .foto--t4 { grid-column: 1 / 3; grid-row: 2; }
+  .foto--t3 { grid-column: 3; grid-row: 2; }
+  .foto--t1 { grid-column: 4; grid-row: 2; }
+  .foto--t2 { grid-column: 5; grid-row: 2; }
+  .grupo--trenzas .foto--t5 { grid-column: 4 / 6; grid-row: 3; aspect-ratio: 3 / 4; }
+  .resena--larga { grid-column: 1 / 4; grid-row: 3; padding: 32px 40px; font-size: 1.625rem; line-height: 1.35; }
 
   .trabajos-mas { width: auto; margin-top: 32px; }
 
@@ -567,11 +579,11 @@ html.suave { scroll-behavior: smooth; }
 }
 
 @media (hover: hover) and (min-width: 640px) {
-  .menu a:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+  .menu a:hover { text-decoration: underline; text-decoration-color: var(--accion); text-underline-offset: 6px; text-decoration-thickness: 2px; }
 }
 
 @media (min-width: 1250px) {
   .portada { grid-template-columns: 1fr 500px; }
-  .titular-que { font-size: 1.5rem; }
+  .titular-que { font-size: 1.125rem; }
   .portada-entrada { font-size: 1.1875rem; margin: 14px 0 24px; }
 }

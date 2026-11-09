@@ -20,7 +20,7 @@ const recortes = {
   'degradado-3': { left: 0, top: 0, width: 415, height: 370 },
   'trenzas-3': { left: 120, top: 0, width: 780, height: 560 },
   'trenzas-4': { left: 100, top: 240, width: 600, height: 500 },
-  'trenzas-5': { left: 0, top: 0, width: 752, height: 1050 },
+  'trenzas-5': { left: 0, top: 180, width: 752, height: 1000 },
 };
 const anchos = [360, 560, 752];
 const fotos = ['degradado-1', 'degradado-2', 'degradado-3', 'degradado-4', 'diseno-1', 'diseno-2', 'diseno-3',

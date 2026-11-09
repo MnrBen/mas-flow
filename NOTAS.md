@@ -10,18 +10,15 @@ pasó por visto bueno previo: se revisa con la demo ya hecha.
 - **Idea:** el degradado como identidad. Un fade es una transición limpia de
   lleno a nada; aquí esa transición se ve en el nombre del negocio y en el
   paso entre secciones.
-- **Luz, no oscuridad:** el local es blanco y verde lima. Es lo contrario de
-  OG BarberShop (negro, blanco y rojo, letra gótica, estética gangster).
-- **Paleta**, medida en sus fotos y en la bandera dominicana:
-  - Blanco del local: `#FFFFFF`, con un blanco roto `#F5F3F7` sacado de la
-    pared lila clara.
-  - Lima de los paneles y muebles (medido `#95CB44`, `#91C118`), avivado a
-    `#9CD63F` porque las fotos lo apagan. Es superficie de marca y color de
-    la acción principal.
-  - Azul de la bandera dominicana `#002D62`: texto y sección de contacto.
-  - Dorado `#F4CD5B` de la camiseta del Domi y del marco del espejo: solo el
-    aro de su foto.
-  - Sin rojo ni negro como colores de la web.
+- **Paleta (demo-v2, urbana):** el lima del local se veía infantil y venía con
+  el local, no lo eligieron ellos. Ahora:
+  - Tinta : el azul dominicano llevado casi a negro, para cabecera,
+    servicios, reseñas y contacto.
+  - Hormigón  de base.
+  - Dorado , de la camiseta del Domi y del marco del espejo: único
+    color de la acción.
+  - Sin negro puro ni rojo, para no parecerse a OG.
+  - La v1, con el lima, sigue en la etiqueta .
 - **Tipografías:** Shrikhand (gruesa, inclinada, de rótulo pintado a mano: da
   movimiento, el "flow") y Onest (texto, clara y cercana).
 - **Recurso propio:** las rayas del fade, que adelgazan hasta desaparecer. Solo
@@ -36,7 +33,8 @@ pasó por visto bueno previo: se revisa con la demo ya hecha.
 
 | Foto | Qué pasa | Decisión |
 | --- | --- | --- |
-| `degradado-4` | La mejor: nítida, fade limpio, 752 px | Portada. No se repite en la galería |
+| `trenzas-5` | Gran foto; el primer recorte le cortaba la cara | Portada (demo-v2), recortada de nuevo con la cara entera; se repite al final de Trenzas |
+| `degradado-4` | Nítida, fade limpio, 752 px | Galería, en Degradados |
 | `trenzas-3`, `-4`, `-5`, `degradado-3` | Capas con "BARBER SHOP / PREMIUM QUALITY / SINCE 2019" de la marca de la capa | Recortadas en `img/` para quitar el rótulo, también en el visor: "since 2019" parece la fecha del negocio. Además esas capas son negras y rojas, justo lo de OG |
 | `degradado-1` | Capa de billetes; suelo oscuro y ropa colgada: no parece el local blanco | Se usa por el corte. Preguntar dónde se hizo |
 | `diseno-3` | Pared gris, no parece el local actual | Se usa por el corte. Preguntar |
